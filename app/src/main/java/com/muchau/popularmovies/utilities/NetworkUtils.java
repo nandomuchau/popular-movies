@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
 
+import com.muchau.popularmovies.MainActivity;
 import com.muchau.popularmovies.R;
 
 import java.io.IOException;
@@ -22,16 +23,21 @@ public final class NetworkUtils {
 
     private static final String BASE_URL = "https://api.themoviedb.org/3";
 
-    private static final String TOP_RATED_MOVIE_URL = "/movie/top_rated";
+    public static final String TOP_RATED_SORT = "/movie/top_rated";
 
-    private static final String POPULAR_MOVIE_URL = "/movie/popular";
+    public static final String POPULAR_SORT = "/movie/popular";
 
     private static final String API_PARAM = "api_key";
 
     public static URL getUrl(Context context) {
         String apiKey = context.getString(R.string.api_key);
+        String sortBy = POPULAR_SORT;
+        if (MainActivity.sharedpreferences.contains(MainActivity.sortBy)) {
+            sortBy = MainActivity.sharedpreferences.getString(MainActivity.sortBy, POPULAR_SORT);
+            Log.d(TAG, "sortBy: " + sortBy);
+        }
 
-        Uri movieQueryUri = Uri.parse(BASE_URL + POPULAR_MOVIE_URL).buildUpon()
+        Uri movieQueryUri = Uri.parse(BASE_URL + sortBy).buildUpon()
                 .appendQueryParameter(API_PARAM, apiKey)
                 .build();
 

@@ -1,10 +1,12 @@
 package com.muchau.popularmovies;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -18,12 +20,24 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = MainActivity.class.getSimpleName();
+
+    public static SharedPreferences sharedpreferences;
+
+    public static final String myPreference = "myPreferences";
+
+    public static final String sortBy = "sortBy";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        sharedpreferences = getSharedPreferences(myPreference,
+                Context.MODE_PRIVATE);
 
         /*ImageView image = findViewById(R.id.imageView);
 
@@ -50,11 +64,18 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_most_popular) {
+            editor.putString(sortBy, NetworkUtils.POPULAR_SORT);
+            editor.apply();
+            return true;
+        } else if (id == R.id.action_highest_rated) {
+            editor.putString(sortBy, NetworkUtils.TOP_RATED_SORT);
+            editor.apply();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
