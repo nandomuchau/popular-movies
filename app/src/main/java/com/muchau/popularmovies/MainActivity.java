@@ -5,12 +5,15 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
+import com.muchau.popularmovies.adapter.MovieAdapter;
 import com.muchau.popularmovies.sync.MovieSyncTask;
 import com.muchau.popularmovies.utilities.NetworkUtils;
 import com.squareup.picasso.Picasso;
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String sortBy = "sortBy";
 
+    private MovieAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +43,13 @@ public class MainActivity extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(myPreference,
                 Context.MODE_PRIVATE);
 
-        /*ImageView image = findViewById(R.id.imageView);
+        String[] data = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"};
 
-        Picasso.with(this)
-                .load("http://i.imgur.com/DvpvklR.png")
-                .placeholder(R.drawable.placeholder)
-                .error(R.drawable.error)
-                .into(image);*/
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view_movies);
+        int numberOfColumns = 2;
+        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
+        adapter = new MovieAdapter(this, data);
+        recyclerView.setAdapter(adapter);
 
         new MovieTask().execute();
     }

@@ -33,6 +33,10 @@ public class Movie {
 
     private String releaseDate;
 
+    public Movie() {
+        super();
+    }
+
     public Movie(int voteCount, int id, boolean video, int voteAverage, String title,
                  long popularity, String posterPath, String originalLanguage, String originalTitle,
                  int[] genreIds, String backdropPath, boolean adult, String overview,
