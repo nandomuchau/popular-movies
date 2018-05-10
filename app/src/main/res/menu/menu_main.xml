@@ -9,7 +9,7 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/action_highest_rated"
-        android:orderInCategory="100"
+        android:orderInCategory="200"
         android:title="@string/action_highest_rated"
         app:showAsAction="never" />
 </menu>
