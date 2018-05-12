@@ -15,6 +15,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 /**
+ * Created by Luis F. Muchau on 5/8/2018.
  * These utilities will be used to communicate with the movie servers.
  */
 public final class NetworkUtils {

@@ -8,21 +8,31 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.muchau.popularmovies.Movie;
 import com.muchau.popularmovies.R;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 /**
  * Created by Luis F. Muchau on 5/9/2018.
  */
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
-    private String[] mData = new String[0];
+    private ArrayList<Movie> mData;
+
     private LayoutInflater mInflater;
+
     private ItemClickListener mClickListener;
+
     private Context mContext;
 
+    private static final String PICTURE_URL = "http://image.tmdb.org/t/p/";
+
+    private static final String PICTURE_W185 = "w185";
+
     // data is passed into the constructor
-    public MovieAdapter(Context context, String[] data) {
+    public MovieAdapter(Context context, ArrayList<Movie> data) {
         this.mContext = context;
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
@@ -38,9 +48,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     // binds the data to the textview in each cell
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String imagePath = mData[position];
+        Movie movie = mData.get(position);
+        String pictureUrl = PICTURE_URL + PICTURE_W185 + movie.getPosterPath();
         Picasso.with(mContext)
-            .load(imagePath)
+            .load(pictureUrl)
             .placeholder(R.drawable.placeholder)
             .error(R.drawable.error)
             .into(holder.movieImage);
@@ -49,7 +60,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     // total number of cells
     @Override
     public int getItemCount() {
-        return mData.length;
+        return mData.size();
     }
 
 
@@ -69,9 +80,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         }
     }
 
+    public void updateMovies(ArrayList<Movie> movies) {
+        this.mData = movies;
+    }
+
     // convenience method for getting data at click position
-    String getItem(int id) {
-        return mData[id];
+    Movie getItem(int id) {
+        return mData.get(id);
     }
 
     // allows clicks events to be caught

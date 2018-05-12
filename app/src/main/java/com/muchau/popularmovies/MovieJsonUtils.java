@@ -29,7 +29,7 @@ public class MovieJsonUtils {
     private static final String OVERVIEW = "overview";
     private static final String RELEASE_DATE = "release_date";
 
-    public static ArrayList<Movie> getMovieValuesFromJson(Context context, String mainJsonStr)
+    public static ArrayList<Movie> getMovieValuesFromJson(String mainJsonStr)
             throws JSONException {
 
         ArrayList<Movie> movieList = new ArrayList<Movie>();
