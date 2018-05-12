@@ -47,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
         movieAdapter = new MovieAdapter(this, new ArrayList<Movie>());
         recyclerView.setAdapter(movieAdapter);
 
+        loadMovies();
+    }
+
+    private void loadMovies(){
         new MovieAsyncTask(this, movieAdapter).execute();
     }
 
@@ -70,10 +74,12 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_most_popular) {
             editor.putString(sortBy, NetworkUtils.POPULAR_SORT);
             editor.apply();
+            loadMovies();
             return true;
         } else if (id == R.id.action_highest_rated) {
             editor.putString(sortBy, NetworkUtils.TOP_RATED_SORT);
             editor.apply();
+            loadMovies();
             return true;
         }
         return super.onOptionsItemSelected(item);
