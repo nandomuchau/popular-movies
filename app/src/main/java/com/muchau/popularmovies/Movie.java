@@ -1,9 +1,11 @@
 package com.muchau.popularmovies;
 
+import java.io.Serializable;
+
 /**
  * Created by Luis F. Muchau on 5/9/2018.
  */
-public class Movie {
+public class Movie implements Serializable{
 
     private int voteCount;
 

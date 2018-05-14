@@ -1,6 +1,7 @@
 package com.muchau.popularmovies;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import com.muchau.popularmovies.adapter.MovieAdapter;
 import com.muchau.popularmovies.sync.MovieAsyncTask;
 import com.muchau.popularmovies.utilities.NetworkUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -83,5 +85,11 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void loadMovieDetailsActivity(Movie movie) {
+        Intent intent = new Intent(this, MovieActivity.class);
+        intent.putExtra("movie", movie);
+        startActivity(intent);
     }
 }

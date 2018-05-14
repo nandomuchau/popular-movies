@@ -7,8 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.muchau.popularmovies.MainActivity;
 import com.muchau.popularmovies.Movie;
+import com.muchau.popularmovies.MovieActivity;
 import com.muchau.popularmovies.R;
 import com.squareup.picasso.Picasso;
 
@@ -22,8 +25,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     private ArrayList<Movie> mData;
 
     private LayoutInflater mInflater;
-
-    private ItemClickListener mClickListener;
 
     private Context mContext;
 
@@ -76,7 +77,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
         @Override
         public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+            Movie movie = getItem(getAdapterPosition());
+            if(mContext instanceof MainActivity){
+                ((MainActivity)mContext).loadMovieDetailsActivity(movie);
+            }
         }
     }
 
@@ -84,18 +88,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         this.mData = movies;
     }
 
-    // convenience method for getting data at click position
     Movie getItem(int id) {
         return mData.get(id);
-    }
-
-    // allows clicks events to be caught
-    void setClickListener(ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
-
-    // parent activity will implement this method to respond to click events
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
     }
 }
