@@ -21,7 +21,7 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="8dp">
+            android:layout_margin="@dimen/margin_s">
 
             <ImageView
                 android:id="@+id/image_view_poster_path"
@@ -35,8 +35,8 @@
                 android:id="@+id/title_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="@dimen/margin_m"
+                android:layout_marginTop="@dimen/margin_s"
                 android:text="@string/movie_title"
                 android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionMode.Title"
                 app:layout_constraintStart_toEndOf="@+id/image_view_poster_path"
@@ -46,8 +46,8 @@
                 android:id="@+id/release_date_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="@dimen/margin_s"
+                android:layout_marginTop="@dimen/margin_s"
                 android:text="@string/nov_2017"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/release_date_label"
@@ -59,7 +59,7 @@
                 style="@android:style/Widget.Holo.Light.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/margin_s"
                 app:layout_constraintStart_toStartOf="@+id/release_date_label"
                 app:layout_constraintTop_toBottomOf="@+id/release_date_label" />
 
@@ -67,7 +67,7 @@
                 android:id="@+id/vote_average_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="@dimen/margin_s"
                 android:text="@string/vote_average"
                 app:layout_constraintStart_toEndOf="@+id/vote_average_rating_bar"
                 app:layout_constraintTop_toTopOf="@+id/vote_average_rating_bar" />
@@ -76,7 +76,7 @@
                 android:id="@+id/release_date_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/margin_s"
                 android:text="@string/release_date"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/title_text_view"
@@ -87,7 +87,7 @@
                 android:id="@+id/description_text_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/margin_m"
                 android:text="@string/description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
