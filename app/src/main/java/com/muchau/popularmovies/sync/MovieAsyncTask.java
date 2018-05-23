@@ -35,10 +35,7 @@ public class MovieAsyncTask extends AsyncTask<Void, Void, Void> {
             URL requestUrl = NetworkUtils.getUrl(this.context);
 
             String jsonResponse = NetworkUtils.getResponseFromHttpUrl(requestUrl);
-            Log.v(TAG, "jsonResponse: " + jsonResponse);
             /* Parse the JSON into a list of weather values */
-            /*ContentValues[] weatherValues = OpenWeatherJsonUtils
-                    .getWeatherContentValuesFromJson(context, jsonWeatherResponse);*/
             this.movies = MovieJsonUtils.getMovieValuesFromJson(jsonResponse);
 
         } catch (Exception e) {

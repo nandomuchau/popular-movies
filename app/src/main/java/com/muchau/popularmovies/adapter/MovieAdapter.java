@@ -6,12 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.muchau.popularmovies.MainActivity;
 import com.muchau.popularmovies.Movie;
-import com.muchau.popularmovies.MovieActivity;
 import com.muchau.popularmovies.R;
 import com.squareup.picasso.Picasso;
 
@@ -46,7 +43,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         return new ViewHolder(view);
     }
 
-    // binds the data to the textview in each cell
+    // binds the data to the textView in each cell
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Movie movie = mData.get(position);
@@ -71,7 +68,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
         ViewHolder(View itemView) {
             super(itemView);
-            movieImage = (ImageView) itemView.findViewById(R.id.image_view_movie);
+            movieImage = itemView.findViewById(R.id.image_view_movie);
             itemView.setOnClickListener(this);
         }
 
@@ -88,7 +85,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         this.mData = movies;
     }
 
-    Movie getItem(int id) {
+    private Movie getItem(int id) {
         return mData.get(id);
     }
 }

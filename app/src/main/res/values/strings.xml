@@ -2,7 +2,7 @@
     <string name="app_name">Popular Movies</string>
     <string name="action_most_popular">Most Popular</string>
     <string name="action_highest_rated">Highest Rated</string>
-    <string name="imagem_description">Imagem description</string>
+    <string name="image_description">Image description</string>
     <string name="description">Description</string>
     <string name="release_date">Release Date:</string>
     <string name="vote_average">5.0</string>

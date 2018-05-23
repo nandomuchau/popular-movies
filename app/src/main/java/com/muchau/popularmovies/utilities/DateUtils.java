@@ -5,14 +5,13 @@ import android.util.Log;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Logger;
 
 /**
  * Created by Luis F. Muchau on 5/22/2018.
  */
 public class DateUtils {
 
-    public static String formateDateFromstring(String inputFormat, String outputFormat, String inputDate){
+    public static String formatDate(String inputFormat, String outputFormat, String inputDate){
 
         Date parsed = null;
         String outputDate = "";

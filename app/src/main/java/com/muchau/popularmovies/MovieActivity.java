@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.muchau.popularmovies.utilities.DateUtils;
 import com.squareup.picasso.Picasso;
@@ -49,7 +48,7 @@ public class MovieActivity extends AppCompatActivity {
         movieTitle.setText(movie.getOriginalTitle());
 
         TextView releaseDate = findViewById(R.id.release_date_text_view);
-        releaseDate.setText(DateUtils.formateDateFromstring("yyyy-MM-dd","MM/dd/yyyy", movie.getReleaseDate()));
+        releaseDate.setText(DateUtils.formatDate("yyyy-MM-dd","MM/dd/yyyy", movie.getReleaseDate()));
 
         RatingBar voteAverageBar = findViewById(R.id.vote_average_rating_bar);
         voteAverageBar.setMax(10);

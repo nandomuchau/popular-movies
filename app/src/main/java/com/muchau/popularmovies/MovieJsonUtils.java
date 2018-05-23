@@ -1,7 +1,5 @@
 package com.muchau.popularmovies;
 
-import android.content.Context;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,7 +30,7 @@ public class MovieJsonUtils {
     public static ArrayList<Movie> getMovieValuesFromJson(String mainJsonStr)
             throws JSONException {
 
-        ArrayList<Movie> movieList = new ArrayList<Movie>();
+        ArrayList<Movie> movieList = new ArrayList<>();
         Movie movie = null;
 
         JSONObject mainJson = new JSONObject(mainJsonStr);

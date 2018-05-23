@@ -15,7 +15,6 @@ import com.muchau.popularmovies.adapter.MovieAdapter;
 import com.muchau.popularmovies.sync.MovieAsyncTask;
 import com.muchau.popularmovies.utilities.NetworkUtils;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static SharedPreferences sharedpreferences;
 
-    public static final String myPreference = "myPreferences";
+    private static final String myPreference = "myPreferences";
 
     public static final String sortBy = "sortBy";
 
@@ -37,13 +36,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         sharedpreferences = getSharedPreferences(myPreference,
                 Context.MODE_PRIVATE);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view_movies);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_movies);
         int numberOfColumns = 2;
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
         movieAdapter = new MovieAdapter(this, new ArrayList<Movie>());
