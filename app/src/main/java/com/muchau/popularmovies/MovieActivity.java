@@ -25,8 +25,6 @@ public class MovieActivity extends AppCompatActivity {
 
         Movie movie = (Movie) getIntent().getSerializableExtra("movie");
 
-        Toast.makeText(this, "Oi:"+ movie.getTitle(), Toast.LENGTH_LONG).show();
-
         ImageView background = findViewById(R.id.image_view_backdrop_path);
 
         ImageView poster = findViewById(R.id.image_view_poster_path);
@@ -57,9 +55,6 @@ public class MovieActivity extends AppCompatActivity {
         voteAverageBar.setMax(10);
         voteAverageBar.setMin(0);
         voteAverageBar.setRating(movie.getVoteAverage()/2);
-
-        TextView voteAverage = findViewById(R.id.vote_average_text_view);
-        voteAverage.setText(String.valueOf(movie.getVoteAverage()));
 
         TextView description = findViewById(R.id.description_text_view);
         description.setText(movie.getOverview());
