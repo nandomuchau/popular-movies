@@ -3,6 +3,8 @@ package com.muchau.popularmovies;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -10,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.muchau.popularmovies.adapter.MovieAdapter;
 import com.muchau.popularmovies.sync.MovieAsyncTask;
@@ -52,7 +55,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadMovies(){
-        new MovieAsyncTask(this, movieAdapter).execute();
+        if (isInternetAvailable()) {
+            new MovieAsyncTask(this, movieAdapter).execute();
+        } else {
+            Toast.makeText(this, R.string.no_internet, Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
@@ -90,5 +97,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MovieActivity.class);
         intent.putExtra("movie", movie);
         startActivity(intent);
+    }
+
+    public boolean isInternetAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager)
+            getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert connectivityManager != null;
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+
+        return networkInfo != null && networkInfo.isConnected();
     }
 }

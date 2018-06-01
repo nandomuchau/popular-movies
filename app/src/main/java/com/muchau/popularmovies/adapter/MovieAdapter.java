@@ -61,7 +61,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         return mData.size();
     }
 
-
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView movieImage;
@@ -86,6 +85,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     }
 
     private Movie getItem(int id) {
-        return mData.get(id);
+        return mData!= null ? mData.get(id) : null;
     }
 }
